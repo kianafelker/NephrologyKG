@@ -68,6 +68,8 @@ def expand_contractions(s, contractions_dict=contractions_dict):
 
 #stopwords
 stop_words = set(stopwords.words('english'))
+data_specific_stop_words = {'patients', 'patient', 'associated', 'usually', 'however', 'often', 'recent', 'may', 'treatment', 'figure', 'fig', 'management', 'complications', 'studies', 'study', 'cases', 'case', 'time', 'without', 'one', 'see', 'control', 'significant', 'reduced', 'use', 'also', 'performed', 'used', 'many', 'might'}
+stop_words.update(data_specific_stop_words)
 
 #stemmer
 def stem_words(text):
@@ -204,3 +206,5 @@ def append_preprocessed_files_list(file_names):
 #print(average_sentence_length(append_preprocessed_files_list(['C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renal_biopsy.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renovascular_hypertension.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_neurotic_hypertension.txt', 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_antiglomerular_basement.txt'])))
 
 #outputs 11.674219228413962
+
+print(type(stop_words))

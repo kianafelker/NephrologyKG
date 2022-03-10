@@ -8,6 +8,8 @@ from gensim import corpora
 #for getting topic model
 
 stop_words = set(stopwords.words('english'))
+data_specific_stop_words = {'patients', 'patient', 'associated', 'usually', 'however', 'often', 'recent', 'may', 'treatment', 'figure', 'fig', 'management', 'complications', 'studies', 'study', 'cases', 'case', 'time', 'without', 'one', 'see', 'control', 'significant', 'reduced', 'use', 'also', 'performed', 'used', 'many', 'might'}
+stop_words.update(data_specific_stop_words)
 exclude = set(string.punctuation)
 lemma = WordNetLemmatizer()
 
@@ -45,4 +47,4 @@ Lda = gensim.models.ldamodel.LdaModel
 # Running and Trainign LDA model on the document term matrix.
 ldamodel = Lda(doc_term_matrix, num_topics=20, id2word = dictionary, passes=150)
 
-print(ldamodel.print_topics(num_topics=20, num_words=3))
+#print(ldamodel.print_topics(num_topics=20, num_words=3))

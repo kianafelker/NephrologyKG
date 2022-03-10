@@ -69,6 +69,8 @@ def expand_contractions(s, contractions_dict=contractions_dict):
 
 #stopwords
 stop_words = set(stopwords.words('english'))
+data_specific_stop_words = {'patients', 'patient', 'associated', 'usually', 'however', 'often', 'recent', 'may', 'treatment', 'figure', 'fig', 'management', 'complications', 'studies', 'study', 'cases', 'case', 'time', 'without', 'one', 'see', 'control', 'significant', 'reduced', 'use', 'also', 'performed', 'used', 'many', 'might'}
+stop_words.update(data_specific_stop_words)
 
 #stemmer
 def stem_words(text):
@@ -209,11 +211,6 @@ def append_preprocessed_files_list(file_names):
         with open(names) as infile:
             list = list + preprocess(names)
     return list
-            
-#average sentence length (removed stop words)
-#print(average_sentence_length(append_preprocessed_files_list(['C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renal_biopsy.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renovascular_hypertension.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_neurotic_hypertension.txt', 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_antiglomerular_basement.txt'])))
-
-#outputs 11.674219228413962
 
 def word_count_dictionary(file_names, output_file):
     with open(output_file, 'a') as outfile:
@@ -236,10 +233,10 @@ def highest_dict_value(file_names, output_file):
         word_count_dict = {}
         for key in final_list:
             word_count_dict[key] = final_list.count(key)
-        outfile.write(repr(dict(sorted(word_count_dict.items(), key = itemgetter(1), reverse = True)[:50])))
-    print(dict(sorted(word_count_dict.items(), key = itemgetter(1), reverse = True)[:50]))
+        outfile.write(repr(dict(sorted(word_count_dict.items(), key = itemgetter(1), reverse = True)[:100])))
+    #print(dict(sorted(word_count_dict.items(), key = itemgetter(1), reverse = True)[:100]))
 
 
-#word_count_dictionary(['C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renal_biopsy.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renovascular_hypertension.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_neurotic_hypertension.txt', 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_antiglomerular_basement.txt'], 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\better_word_count_dictionary.txt')
-#highest_dict_value(['C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renal_biopsy.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renovascular_hypertension.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_neurotic_hypertension.txt', 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_antiglomerular_basement.txt'], 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\50_highest_word_counts.txt')
+word_count_dictionary(['C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renal_biopsy.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renovascular_hypertension.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_neurotic_hypertension.txt', 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_antiglomerular_basement.txt'], 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\better_word_count_dictionary.txt')
+highest_dict_value(['C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renal_biopsy.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renovascular_hypertension.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_neurotic_hypertension.txt', 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_antiglomerular_basement.txt'], 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\100_highest_word_counts.txt')
 append_preprocessed_files(['C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renal_biopsy.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renovascular_hypertension.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_neurotic_hypertension.txt', 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_antiglomerular_basement.txt'], 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\better_word_list.txt')
