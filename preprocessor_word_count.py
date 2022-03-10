@@ -236,7 +236,9 @@ def highest_dict_value(file_names, output_file):
         outfile.write(repr(dict(sorted(word_count_dict.items(), key = itemgetter(1), reverse = True)[:100])))
     #print(dict(sorted(word_count_dict.items(), key = itemgetter(1), reverse = True)[:100]))
 
-
+#gives a complete word count dictionary
 word_count_dictionary(['C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renal_biopsy.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renovascular_hypertension.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_neurotic_hypertension.txt', 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_antiglomerular_basement.txt'], 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\better_word_count_dictionary.txt')
+#gives the top dictionary values (set to 100 right now)
 highest_dict_value(['C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renal_biopsy.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renovascular_hypertension.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_neurotic_hypertension.txt', 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_antiglomerular_basement.txt'], 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\100_highest_word_counts.txt')
+#gives a list of words
 append_preprocessed_files(['C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renal_biopsy.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_renovascular_hypertension.txt','C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_neurotic_hypertension.txt', 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\pdfminer_antiglomerular_basement.txt'], 'C:\\Users\\kiana\\COSC490\\pdfminer_text_files\\better_word_list.txt')
